@@ -83,9 +83,7 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
     return 1;
-    
 }
 
 
@@ -94,7 +92,8 @@
 
     // 根据是否打开的标识 _isOpen返回不同row高度.
     if (_isOpen) {
-        CGFloat height = (_titleArr.count / 5 + 1) * 30;
+        // 按照整数/整数丢失精度仍为整数的思想(例如 9/5=1), 显示按钮的行数 = 显示按钮的个数/(每行显示的按钮个数+1) 行数为_titleArr.count / (4+1)
+        CGFloat height = (_titleArr.count / (4+1) + 1) * 30;
         
         return height;
     }else{
